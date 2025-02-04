@@ -1,17 +1,32 @@
 <%@page language="java" %>
 
 <html>
-    <head>
-        <link rel = "stylesheet" type = "text/css" href="style.css">
-    </head>
-    <body>
-        <h2> My Calculator </h2>
-        <form action = "add">
-            <label for = "num1"> Enter First Number : </label>
-            <input type = "text" id = "num1" name = "num1"> <br>
-            <label for = "num2"> Enter Second Number : </label>
-            <input type = "text" id = "num2" name = "num2"> <br>
-            <input type = "submit" value = "Addition">
-        </form>
-    </body>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h2>Calculator</h2>
+    <form action="calculate">
+        <div class="input-group">
+            <label for="num1">Enter First Number:</label>
+            <input type="text" id="num1" name="num1">
+        </div>
+
+        <div class="input-group">
+            <label for="num2">Enter Second Number:</label>
+            <input type="text" id="num2" name="num2">
+        </div>
+
+        <div class="operations">
+            <label><input type="radio" name="operation" value="add" required> Addition ( + )</label><br>
+            <label><input type="radio" name="operation" value="subtract"> Subtraction ( - )</label><br>
+            <label><input type="radio" name="operation" value="multiply"> Multiplication ( * )</label><br>
+            <label><input type="radio" name="operation" value="divide"> Division ( / )</label><br>
+        </div>
+
+        <input type="submit" class="btn" value="Calculate">
+    </form>
+</div>
+</body>
 </html>

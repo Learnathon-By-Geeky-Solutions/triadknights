@@ -2,9 +2,14 @@
 
 <html>
 <head>
-    <link rel = "stylesheet" type = "text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h2> Result is : ${result} </h2>
+<div class="result-container">
+    <h2 class="result-text"> ${message} </h2> <!-- Displays operation type like "Addition Result:" -->
+    <h2 class="result-text"> <span> ${result} </span></h2> <!-- Displays the computed result -->
+
+    <a href="/" class="back-btn">Back to Calculator</a>
+</div>
 </body>
 </html>
