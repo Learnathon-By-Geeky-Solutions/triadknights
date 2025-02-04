@@ -1,22 +1,25 @@
 package com.SpringBootWeb.MyCalculator;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
 
-    @RequestMapping("/")
+    // Using @GetMapping to explicitly specify GET method for the home page
+    @GetMapping("/")
     public String home() {
-        return "index";
+        return "index"; // Return the homepage view
     }
 
-    @RequestMapping("/calculate")
+    // Using @PostMapping to explicitly specify POST method for the calculation
+    @PostMapping("/calculate")
     public ModelAndView calculate( int num1, int num2, String operation, ModelAndView mv) {
-        double result = 0;
         String message = "";
+        double result = 0;
 
         switch (operation) {
             case "add":
@@ -33,7 +36,7 @@ public class HomeController {
                 break;
             case "divide":
                 if (num2 != 0) {
-                    result = (double) num1 / num2;
+                    result = num1 / num2;
                     message = "Division Result:";
                 } else {
                     message = "Error: Division by zero!";
@@ -47,7 +50,7 @@ public class HomeController {
 
         if (num2 == 0 && operation.equals("divide")) {
             mv.addObject("result", "INFINITY");
-        }else {
+        } else {
             mv.addObject("result", result);
         }
 

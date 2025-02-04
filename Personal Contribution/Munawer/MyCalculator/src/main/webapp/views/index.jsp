@@ -7,15 +7,16 @@
 <body>
 <div class="container">
     <h2>Calculator</h2>
-    <form action="calculate">
+    <!-- Form should use POST method to send data -->
+    <form action="calculate" method="POST">
         <div class="input-group">
             <label for="num1">Enter First Number:</label>
-            <input type="text" id="num1" name="num1">
+            <input type="text" id="num1" name="num1" required>
         </div>
 
         <div class="input-group">
             <label for="num2">Enter Second Number:</label>
-            <input type="text" id="num2" name="num2">
+            <input type="text" id="num2" name="num2" required>
         </div>
 
         <div class="operations">
