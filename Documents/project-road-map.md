@@ -1,6 +1,3 @@
-Here is a **detailed breakdown** of each phase of your **e-commerce web application for farmers**, ensuring you complete it within one month.
-
----
 
 # **Phase 1: User Authentication & Product Display**
 
