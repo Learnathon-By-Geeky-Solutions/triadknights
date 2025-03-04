@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.triad_knights</groupId>
-	<artifactId>argi_connect</artifactId>
+	<artifactId>agri_connect</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>argi_connect</name>
+	<name>agri_connect</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
