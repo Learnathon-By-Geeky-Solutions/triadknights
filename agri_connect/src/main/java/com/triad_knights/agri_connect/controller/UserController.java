@@ -6,19 +6,23 @@ import com.triad_knights.agri_connect.model.User;
 import com.triad_knights.agri_connect.service.JwtService;
 import com.triad_knights.agri_connect.service.UserService;
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -40,8 +44,19 @@ public class UserController {
         model.addAttribute("user", new User());
         return "register";
     }
+
     @PostMapping("registerForm")
-    public String register(@ModelAttribute User user) {
+    public String register(@Valid @ModelAttribute User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            // Convert errors into a map for JSP
+            Map<String, String> errors = new HashMap<>();
+            for (FieldError error : result.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
+            }
+            model.addAttribute("errors", errors);
+            return "register"; // Return to form with errors
+        }
+
         try {
             Role userRole = Role.valueOf(user.getRole().name());  // Ensure valid enum conversion
             user.setRole(userRole);
